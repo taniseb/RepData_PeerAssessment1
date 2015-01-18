@@ -1,11 +1,8 @@
 ---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
-
+title: "PeerAssignment"
+output: html_document
 ---
-## Loading and preprocessing the data
+
 ```{r}
 a<-read.csv("activity.csv")
 a$date=as.Date(a$date)
@@ -14,7 +11,7 @@ c<-a$steps
 d<-a$interval
 avgstepsday=aggregate(c~b, FUN=sum)
 ```
-## What is mean total number of steps taken per day?
+
 ```{r}
 
 #histogram & stats
@@ -23,7 +20,7 @@ mean(avgstepsday$c)
 median(avgstepsday$c)
 
 ```
-## What is the average daily activity pattern?
+
 
 ```{r}
 #plot
@@ -31,7 +28,7 @@ avgstepsdayn=aggregate(c~d, FUN=mean)
 plot(avgstepsdayn$d,avgstepsdayn$c, type="l")
 
 ```
-## Imputing missing values
+
 
 ```{r}
 #Number of NA's, only one that has NA's is steps.
@@ -40,7 +37,6 @@ sum(is.na(a$steps))
 
 ```
 
-## Are there differences in activity patterns between weekdays and weekends?
 ```{r}
 #Replacing: 
 f<-a
